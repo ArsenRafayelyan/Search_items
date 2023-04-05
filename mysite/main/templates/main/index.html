@@ -1,0 +1,22 @@
+<header>
+    <div>
+        <h1>Home Page</h1>
+        <hr>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="search" id="" placeholder="Enter name">
+        <button type="submit">Search</button>
+    </form>
+</header>
+<br>
+{% if search_item %}
+    <h2>Search results for "{{ search_item }}":</h2>
+{% endif %}
+{% if phones %}
+    {% for phone in phones %}
+        <h2>{{ phone.name }}</h2>
+    {% endfor %}
+{% else %}
+    <p>No results found.</p>
+{% endif %}
